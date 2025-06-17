@@ -1,0 +1,18 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+
+@media (prefers-color-scheme: light) {
+  :root,
+[data-theme] {
+  background-color: var(--root-bg, var(--color-base-100));
+  color: var(--color-base-content);
+}
+  a:hover {
+    color: #747bff;
+  }
+  button {
+    background-color: #f9f9f9;
+  }
+}
