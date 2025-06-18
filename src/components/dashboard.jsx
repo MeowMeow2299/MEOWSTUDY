@@ -11,7 +11,7 @@ const Dashboard = () => {
         <div className="navbar w-full bg-yellow-50 text-gray-800 shadow-md px-6 py-2 flex justify-between items-center mt-[-2%]">
   <div className="flex-1 flex items-center gap-6">
     <a  className="text-gray-800 font-bold text-2xl font-sans ml-30 cursor-pointer">NOTE MEOW FOR STUDY</a>
-<button onClick={() => navigate("/meowstudy/create")} className="text-gray-800 font-semibold text-xl font-sans ml-30 cursor-pointer rounded-md p-2">Create Notes</button>
+<button onClick={() => navigate("/meowstudy/create")} className="text-gray-800 font-semibold text-xl font-sans ml-30 cursor-pointer rounded-md p-2">Your-studybase</button>
      <a className="text-gray-800 font-semibold text-xl font-sans ml-30 cursor-pointer rounded-md p-2">Categories</a>
      <button onClick={() => navigate("/meowstudy/about-us")} className="text-gray-800 font-semibold text-xl font-sans ml-30 cursor-pointer rounded-md p-2">About Us</button>
   </div>
@@ -99,10 +99,15 @@ Because your study space deserves elegance.
       </div>
     <div className="min-h-screen space-y-2 mx-auto items-center mt[-5px] relative p-10 carousel w-full">
       <div className="carousel w-full bg-yellow-50">
-  <div id="slide1" className="carousel-item relative w-full ">
+  <div id="slide1" alt="Background" className="carousel-item relative w-full">
     <img
       src="./public/photo/Arknights-1.jpg"
-      className="w-full" />
+      className="w-full object-cover opacity-50 inset-0 bg-white/20 backdrop-blur-md" />
+      <div className="absolute inset-0 flex items-center justify-center flex flex-col p-8 mx-auto space-y-8">
+    <h1 className="text-5xl font-bold text-gray-800 font-family: ui-monospace">MASTER YOUR VOCABULARY WITH NOTE MEOW!</h1>
+    <h3 className="text-3xl font-bold text-gray-800 text-center">"Note Meow is your personal vocabulary vault—never forget a word again! <br></br>Save, organize, and review your words effortlessly."<br></br></h3>
+   <button onClick={() => navigate("/meowstudy/create")} className="text-3xl p-10 font-bold text-gray-800 btn-soft btn-warning btn bg-yellow-50 border-none hover:bg-yellow-100 cursor-pointer">Let's study with MEOW!</button>
+  </div>
     <div className="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
       <a href="#slide4" className="btn btn-circle">❮</a>
       <a href="#slide2" className="btn btn-circle">❯</a>
@@ -111,30 +116,13 @@ Because your study space deserves elegance.
   <div id="slide2" className="carousel-item relative w-full">
     <img
       src="./public/photo/Arknights-7.jpg"
-      className="w-full" />
+      className="w-full object-cover opacity-50 inset-0 bg-white/20 backdrop-blur-md" />
     <div className="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
       <a href="#slide1" className="btn btn-circle">❮</a>
       <a href="#slide3" className="btn btn-circle">❯</a>
     </div>
   </div>
-  <div id="slide3" className="carousel-item relative w-full">
-    <img
-      src="./public/photo/Arknights-11.jpg"
-      className="w-full" />
-    <div className="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
-      <a href="#slide2" className="btn btn-circle">❮</a>
-      <a href="#slide4" className="btn btn-circle">❯</a>
-    </div>
-  </div>
-  <div id="slide4" className="carousel-item relative w-full">
-    <img
-      src="./public/photo/Arknights-8.jpg"
-      className="w-full" />
-    <div className="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
-      <button href="#slide3" className="btn btn-circle">❮</button>
-      <button href="#slide1" className="btn btn-circle">❯</button>
-    </div>
-  </div>
+
 </div>
       <div className="bg-yellow-50 p-6 h-full min-h-[500px] item-start">
         <MusicPlayer className="shadow-md rounded-lg h-full min-h-[500px] col-span-1 flex flex-col" />
