@@ -12,7 +12,7 @@ return (
   <div className="flex-1 flex items-center gap-6">
     <a  className="text-gray-800 font-bold text-2xl font-sans ml-30 cursor-pointer">NOTE MEOW FOR STUDY</a>
 <button onClick={() => navigate("/meowstudy/create")} className="text-gray-800 font-semibold text-xl font-sans ml-30 cursor-pointer rounded-md p-2">Create Notes</button>
-     <a className="text-gray-800 font-semibold text-xl font-sans ml-30 cursor-pointer rounded-md p-2">Categories</a>
+     <button onClick={() => navigate("/meowstudy/categories")} className="text-gray-800 font-semibold text-xl font-sans ml-30 cursor-pointer rounded-md p-2">Categories</button>
      <button onClick={() => navigate("/meowstudy/about-us")} className="text-gray-800 font-semibold text-xl font-sans ml-30 cursor-pointer rounded-md p-2">About Us</button>
   </div>
  <label className="swap swap-rotate mr-2">

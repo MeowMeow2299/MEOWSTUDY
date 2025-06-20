@@ -1,29 +1,31 @@
-import { useEffect, useState } from 'react';
-import { collection, getDocs, query, orderBy, limit } from 'firebase/firestore';
+import { collection, getDocs } from 'firebase/firestore';
 import { db } from '../firebase/config';
+import { useState, useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
 
-export default function Categories() {
-  const [latestNote, setLatestNote] = useState(null);
-    const navigate = useNavigate();
+export const AllNotes = () => {
+  const [notes, setNotes] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
-    const fetchLatestNote = async () => {
-      const q = query(collection(db, 'notes'), orderBy('createdAt', 'desc'), limit(1));
-      const snapshot = await getDocs(q);
-      const note = snapshot.docs[0]?.data();
-      setLatestNote(note);
+    const fetchNotes = async () => {
+      const querySnapshot = await getDocs(collection(db, 'notes'));
+      const fetchedNotes = querySnapshot.docs.map(doc => ({
+        id: doc.id,
+        ...doc.data()
+      }));
+      setNotes(fetchedNotes);
     };
 
-    fetchLatestNote();
+    fetchNotes();
   }, []);
 
   return (
-     <div className="bg-yellow-50 w-full">
-        <div className="navbar w-full bg-yellow-50 text-gray-800 shadow-md px-6 py-2 flex justify-between items-center mt-[-2%]">
+    <div className="bg-[url('/photo/Arknights-1.jpg')] bg-cover bg-center bg-no-repeat h-500 min-h-screen ">
+      <div className="navbar w-full bg-yellow-50 text-gray-800 shadow-md px-6 py-2 flex justify-between items-center mt-[-2%]">
   <div className="flex-1 flex items-center gap-6">
-    <a  className="text-gray-800 font-bold text-2xl font-sans ml-30 cursor-pointer">NOTE MEOW FOR STUDY</a>
-<button onClick={() => navigate("/meowstudy/create")} className="text-gray-800 font-semibold text-xl font-sans ml-30 cursor-pointer rounded-md p-2">Your-studybase</button>
+    <button onClick={() => navigate("/meowstudy/")} className="text-gray-800 font-bold text-2xl font-sans ml-30 cursor-pointer">NOTE MEOW FOR STUDY</button>
+<button onClick={() => navigate("/meowstudy/all-notes")} className="text-gray-800 font-semibold text-xl font-sans ml-30 cursor-pointer rounded-md p-2">All Notes</button>
      <button onClick={() => navigate("/meowstudy/categories")} className="text-gray-800 font-semibold text-xl font-sans ml-30 cursor-pointer rounded-md p-2">Categories</button>
      <button onClick={() => navigate("/meowstudy/about-us")} className="text-gray-800 font-semibold text-xl font-sans ml-30 cursor-pointer rounded-md p-2">About Us</button>
   </div>
@@ -82,18 +84,27 @@ export default function Categories() {
       </div>
     </div>
   </div>
-    <div className="p-6">
-      <h1 className="text-3xl font-bold text-gray-800 mb-4">📂 Trang Categories</h1>
-
-      {latestNote ? (
-        <div className="bg-yellow-50 p-4 rounded shadow">
-          <h2 className="text-xl text-gray-800 font-semibold mb-2">📝 Ghi chú vừa tạo</h2>
-          <div dangerouslySetInnerHTML={{ __html: latestNote.text }} />
+    <div className="p-4 max-w-4xl text-gray-800 mx-auto">
+      <h2 className="text-4xl font-bold mb-6">All Notes</h2>
+      {notes.map(note => (
+        <div key={note.id} className="bg-yellow-50 p-4 mb-4 rounded">
+       <div dangerouslySetInnerHTML={{ __html: note.text }} />
+       {/* Ảnh kèm theo ghi chú */}
+  {note.images?.length > 0 && (
+    <div className="grid grid-cols-3 gap-4 mt-3">
+      {note.images.map((src, idx) => (
+        <img key={idx} src={src} alt={`ảnh-${idx}`} className="rounded-md mb-2" />
+      ))}
+    </div>
+  )}
+          <p className="text-sm text-gray-500 mt-2">
+            Created: {note.createdAt?.toDate().toLocaleString()}
+          </p>
         </div>
-      ) : (
-        <p>Không tìm thấy ghi chú gần nhất.</p>
-      )}
+      ))}
     </div>
     </div>
   );
-}
+};
+
+export default AllNotes;

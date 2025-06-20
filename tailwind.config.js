@@ -13,9 +13,25 @@ module.exports = {
       },
     },
   },
+  darkMode: 'class',
   plugins: [require("daisyui")],
   daisyui: {
-    themes: ["light", "dark"], // Kích hoạt theme sáng/tối
+    themes: [
+      {
+        mytheme: {
+          primary: '#FFEF00',     // nút chính
+          secondary: '#FFFACD',   // nút phụ
+          accent: '#DAA520',      // nhấn mạnh
+          neutral: '#3d4451',     // màu nền chung
+          'base-100': '#FFFFE0',  // background chính
+          info: '#38bdf8',
+          success: '#22c55e',
+          warning: '#facc15',
+          error: '#ef4444',
+
+        }
+      }
+    ], // Kích hoạt theme sáng/tối
   },
 
 };

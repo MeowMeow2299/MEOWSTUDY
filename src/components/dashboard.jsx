@@ -12,7 +12,7 @@ const Dashboard = () => {
   <div className="flex-1 flex items-center gap-6">
     <a  className="text-gray-800 font-bold text-2xl font-sans ml-30 cursor-pointer">NOTE MEOW FOR STUDY</a>
 <button onClick={() => navigate("/meowstudy/create")} className="text-gray-800 font-semibold text-xl font-sans ml-30 cursor-pointer rounded-md p-2">Your-studybase</button>
-     <a className="text-gray-800 font-semibold text-xl font-sans ml-30 cursor-pointer rounded-md p-2">Categories</a>
+     <button onClick={() => navigate("/meowstudy/categories")} className="text-gray-800 font-semibold text-xl font-sans ml-30 cursor-pointer rounded-md p-2">Categories</button>
      <button onClick={() => navigate("/meowstudy/about-us")} className="text-gray-800 font-semibold text-xl font-sans ml-30 cursor-pointer rounded-md p-2">About Us</button>
   </div>
  <label className="swap swap-rotate mr-2">
@@ -70,7 +70,7 @@ const Dashboard = () => {
       </div>
     </div>
   </div>
-  <div tabIndex={0} className="collapse collapse-open bg-yellow-100 text-gray-800 w-full rounded-none">
+  <div tabIndex={0} className="collapse collapse-open bg-yellow-300 text-gray-800 w-full rounded-none">
         <div className="collapse-title font-semibold">더 똑똑하게 공부하세요 — NoteMeow와 함께.</div>
         <div className="collapse-content text-sm">
           완벽한 노트, 아름다운 집중.
@@ -79,7 +79,7 @@ const Dashboard = () => {
 당신의 공부 공간은 고급스러울 자격이 있어요.
         </div>
       </div>
-      <div tabIndex={0} className="collapse collapse-open bg-yellow-100 text-gray-800 w-full rounded-none">
+      <div tabIndex={0} className="collapse collapse-open bg-yellow-200 text-gray-800 w-full rounded-none">
         <div className="collapse-title font-semibold">もっとスマートに勉強しよう — NoteMeowと一緒に。</div>
         <div className="collapse-content text-sm">
           完璧なノート、美しい集中力。
